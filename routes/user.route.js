@@ -40,6 +40,7 @@ userRoute.post('/login', async (req, res) => {
       const token = jwt.sign({ userId: user._id }, 'your_secret_key', { expiresIn: '1h' });
       res.json({ message: 'Login successful.', token });
     } catch (error) {
+      console.log(error)
       res.status(500).json({ error: 'An error occurred while logging in.' });
     }
   });

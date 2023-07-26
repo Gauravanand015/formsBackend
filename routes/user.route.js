@@ -26,7 +26,7 @@ userRoute.post('/login', async (req, res) => {
     const { username, password } = req.body;
   
     try {
-      const user = await UserModel.findOne({ username });
+      const user = await UserModel.findOne({ username:username });
       if (!user) {
         return res.status(401).json({ error: 'Invalid credentials.' });
       }

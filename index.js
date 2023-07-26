@@ -19,7 +19,11 @@ app.use("/user", userRoute);
 app.use("/api", formRoute);
 
 app.listen(PORT, async () => {
-  await connection;
-  console.log("Connected to Database");
-  console.log(`Server is running on port 5000`);
+  await connectionPromise
+  .then(() => {
+    console.log("Connected to MongoDB!");
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+  });;
 });
